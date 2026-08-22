@@ -73,8 +73,10 @@ void zadatak1()
 	delete pPrev;
 }
 
-void main()
+int main()
 {
 	zadatak1();
 	// zadatak2();
+
+	return 0;
 }

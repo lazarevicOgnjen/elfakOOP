@@ -1,6 +1,8 @@
 #pragma once
 #include <ostream>
 
+using namespace std;
+
 class Automobil {
 protected:
 	char* reg_oznaka;

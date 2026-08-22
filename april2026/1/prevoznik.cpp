@@ -10,7 +10,7 @@ Prevoznik::Prevoznik(int u) {
 }
 
 Prevoznik::~Prevoznik() {
-	for (int i = 0; i < ukupan_kapacitet; i++) {
+	for (int i = 0; i < trenutno; i++) {
 		delete flota[i];
 	}
 	delete[]flota;
@@ -69,16 +69,16 @@ int Prevoznik::UkupnaKilometraza() const {
 }
 
 Automobil* Prevoznik::NajpovoljnijiAutomobil(int d) {
-	int x = 0, najboljeX = 999999999;
-	Automobil* najpovoljniji = nullptr;
-	for (int i = 0; i < trenutno; i++) {
+	float x = 0, najboljeX = 0;
+	Automobil* najpovoljniji = flota[0];
+	for (int i = 1; i < trenutno; i++) {
 		x = flota[i]->MaxKM() - d;
 		if (x == 0) {
 			najpovoljniji = flota[i];
 			break;
 		}
 		else if (x > 0) {
-			if (x < najboljeX) {
+			if (x < najboljeX || najboljeX < 0) {
 				najboljeX = x;
 				najpovoljniji = flota[i];
 			}
